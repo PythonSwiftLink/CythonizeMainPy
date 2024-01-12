@@ -5,7 +5,7 @@ class CythonizedMainPy(CythonRecipe):
     url = "src"
     library = "libCythonizedMainPy.a"
     #depends = ["python3", "hostpython3"]
-    depends = []
+    depends = ["python3"]
     # Frameworks you used
     pbx_frameworks = []
 
