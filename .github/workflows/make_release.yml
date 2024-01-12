@@ -77,7 +77,7 @@ jobs:
           mv ${{env.path}} kivy-ios/kivy_ios/recipes/${{env.recipe}}
 
       - name: modify kivy recipe
-        shell: python3
+        shell: python
         run: |
           init_path = "kivy-ios/kivy_ios/recipes/kivy/__init__.py"
           with open(init_path, "r") as input_file:
