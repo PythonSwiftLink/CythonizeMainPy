@@ -2,6 +2,12 @@
 
 name: make release
 
+env:
+  recipe: CythonizeMainPy
+  path: recipe
+  site_files: "cythonized_main"
+
+  lib: dist/root/python3/lib
 
 on:
 
@@ -23,12 +29,7 @@ jobs:
     #runs-on: self-hosted
     permissions:
         contents: write
-    env:
-      recipe: custom_lib
-      path: custom_lib
-      site_files: custom_lib, custom_lib
-
-      lib: dist/root/python3/lib
+    
       
   
     steps:
@@ -73,7 +74,7 @@ jobs:
           ##### apply modified kivy to recipe as "src" #####
           mv kivy kivy-ios/kivy_ios/recipes/kivy/src
 
-          cp -r ${{env.recipe_path}} kivy-ios/kivy_ios/recipes/
+          mv ${{env.path}} kivy-ios/kivy_ios/recipes/${{env.recipe}}
 
       - name: modify kivy recipe
         shell: python
@@ -96,8 +97,8 @@ jobs:
         run: toolchain build hostpython3
 
 
-      - name: build python3
-        run: toolchain build python3
+      # - name: build python3
+      #   run: toolchain build python3
 
       - name: build custom recipe
         run: toolchain build ${{env.recipe}}
@@ -119,7 +120,7 @@ jobs:
 
       
       # taking out necessary libraries and zipping them into "output" folder
-      - name: repack python3.${{ matrix.version }} / numpy xcframework
+      - name: repack recipe xcframework
         run: |
           cp -rf dist/xcframework/lib${{env.recipe}}.xcframework output/
         
