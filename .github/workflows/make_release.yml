@@ -145,7 +145,7 @@ jobs:
         run: |
           RECIPE=${{env.recipe}}
           # mkdir -p output/dist_lib
-          mv dist/lib output/dist_lib
+          cp -rf dist/lib output/dist_lib
           cd output
           IOS_LIBS=dist_lib/iphoneos
           SIM_LIBS=dist_lib/iphonesimulator
