@@ -119,7 +119,7 @@ jobs:
               mv -f $PY_SITE/$FILE output/$RECIPE/site-packages
             fi
           done
-          
+          cd output/$RECIPE/site-packages
           zip -r site-packages.zip $PY_SITE
           rm -rf site-packages
 
@@ -131,13 +131,13 @@ jobs:
         
 
       
-      - name: repack & zip lib/lib.a files
-        working-directory: output/${{env.recipe}}
-        run: |
-          PY_LIB=${{env.lib}}
-          RECIPE=${{env.recipe}}
-          cp $PY_LIB/lib$RECIPE.a lib/
-          zip lib.zip lib/*
+      # - name: repack & zip lib/lib.a files
+      #   working-directory: output/${{env.recipe}}
+      #   run: |
+      #     PY_LIB=${{env.lib}}
+      #     RECIPE=${{env.recipe}}
+      #     cp $PY_LIB/lib$RECIPE.a lib/
+      #     zip lib.zip lib/*
           
 
       - name: repack & zip dist_libs
