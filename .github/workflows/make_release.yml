@@ -119,7 +119,7 @@ jobs:
               mv -f $PY_SITE/$FILE output/$RECIPE/site-packages
             fi
           done
-          cd output/$RECIPE/site-packages
+          cd output/$RECIPE
           zip -r site-packages.zip site-packages
           rm -rf site-packages
 
@@ -127,7 +127,7 @@ jobs:
       # taking out necessary libraries and zipping them into "output" folder
       - name: repack recipe xcframework
         run: |
-          cp -rf dist/xcframework/lib${{env.recipe}}.xcframework output/
+          cp -rf dist/xcframework/lib${{env.recipe}}.xcframework output/${{env.recipe}}/xcframework/
         
 
       
@@ -145,7 +145,7 @@ jobs:
         run: |
           RECIPE=${{env.recipe}}
           mkdir -p output/dist_lib
-          mv dist/lib/lib$RECIPE.a output/dist_lib/
+          # mv dist/lib/lib$RECIPE.a output/dist_lib/
           cd output
           IOS_LIBS=dist_lib/iphoneos
           SIM_LIBS=dist_lib/iphonesimulator
@@ -154,14 +154,15 @@ jobs:
           echo $SIM_LIBS
 
           ###### DIST FILES #######
+          RECIPE_IOS_LIBS=$RECIPE/$IOS_LIBS/
+          mkdir -p $RECIPE_IOS_LIBS
+          mv -f $IOS_LIBS/$RECIPE.a $RECIPE_IOS_LIBS/
+          echo transfered $RECIPE_IOS_LIBS
           
-          mkdir -p $RECIPE/$IOS_LIBS
-          mv -f $IOS_LIBS/$RECIPE.a $RECIPE/$IOS_LIBS/
-          echo transfered $RECIPE/$IOS_LIBS
-
-          mkdir -p $RECIPE/$SIM_LIBS
-          mv -f $SIM_LIBS/lib$RECIPE.a $RECIPE/$SIM_LIBS/
-          echo transfered $RECIPE/$SIM_LIBS
+          RECIPE_SIM_LIBS=$RECIPE/$SIM_LIBS/
+          mkdir -p $RECIPE_SIM_LIBS
+          mv -f $SIM_LIBS/lib$RECIPE.a $RECIPE_SIM_LIBS/
+          echo transfered $RECIPE_SIM_LIBS
 
         
           
