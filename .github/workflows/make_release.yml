@@ -7,7 +7,7 @@ env:
   path: recipe
   site_files: "cythonized_main"
 
-  lib: dist/root/python3/lib
+  lib: dist/root/lib
 
 on:
 
