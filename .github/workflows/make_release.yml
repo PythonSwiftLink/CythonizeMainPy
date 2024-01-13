@@ -119,7 +119,7 @@ jobs:
             fi
           done
           
-          zip -r site-packages.zip site-packages
+          zip -r site-packages.zip $PY_SITE
           rm -rf site-packages
 
       
