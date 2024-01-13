@@ -252,7 +252,7 @@ jobs:
       - name: release package
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist_lib.zip, site-packages, xcframework/*.zip"
+          artifacts: "dist_lib.zip, site-packages.zip, xcframework/*.zip"
           commit: release
           tag: 311.${{ github.event.inputs.tag }}
           repo: ${{ env.recipe }}
