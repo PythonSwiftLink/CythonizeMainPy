@@ -107,7 +107,7 @@ jobs:
         run: |
           RECIPE=${{env.recipe}}
           mkdir -p output/$RECIPE/lib
-          mkdif -p output/$RECIPE/site-packages
+          mkdir -p output/$RECIPE/site-packages
 
           PY_SITE=${{env.lib}}/python3.11/site-packages
           for FILE in ${{env.site_files}}
