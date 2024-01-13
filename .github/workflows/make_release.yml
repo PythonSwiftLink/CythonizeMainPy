@@ -6,6 +6,7 @@ env:
   recipe: CythonizedMainPy
   path: recipe
   site_files: "cythonized_main"
+  email: psythonswiftlink@gmail.com
 
   site_path: dist/root/python3/lib/python3.11/site-packages
   lib: dist/root/lib
@@ -228,7 +229,7 @@ jobs:
           mkdir -p $SOURCES
           #cp -rf package_templates/$RECIPE $SOURCES/
 
-          cp -f output/Package.swift $RECIPE/
+          cp -f Package.swift $RECIPE/
           PACKAGE_TARGET=$SOURCES/$RECIPE
           mkdir -p $PACKAGE_TARGET
           touch $PACKAGE_TARGET/$RECIPE.swift
@@ -240,7 +241,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ env.TOKEN }}
         with:
-          source-directory: 'KivyPythonCore'
+          source-directory: ${{ env.recipe }}
           destination-github-username: ${{ github.repository_owner }}
           destination-repository-name: ${{ github.repository }}
           user-email: ${{ env.email }}
@@ -249,7 +250,7 @@ jobs:
       - name: release package
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "python/python_dist.zip, python/xcframework/*.zip"
+          artifacts: "dist_lib.zip, xcframework/*.zip"
           commit: release
           tag: 311.${{ github.event.inputs.tag }}
           repo: ${{github.repository}}
@@ -257,10 +258,6 @@ jobs:
           allowUpdates: true
           makeLatest: ${{ github.event.inputs.lastest }}
 
-      - name: create KivyCore
-        run: |
-          #cp -rf package_template ${{ env.recipe }}
-          cp -f output/Package.swift KivyCore/
           
 
      
