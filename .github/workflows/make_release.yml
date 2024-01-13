@@ -120,7 +120,7 @@ jobs:
             fi
           done
           cd output/$RECIPE/site-packages
-          zip -r site-packages.zip $PY_SITE
+          zip -r site-packages.zip site-packages
           rm -rf site-packages
 
       
