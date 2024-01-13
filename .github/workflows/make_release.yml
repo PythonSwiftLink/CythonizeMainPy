@@ -149,10 +149,13 @@ jobs:
         id: repack_dist
         run: |
           RECIPE=${{env.recipe}}
-          # mkdir -p output/dist_lib
+          mkdir -p output/dist_lib
           cp -rf dist/lib output/
+          
           cd output
-          mv lib dist_lib
+
+        
+          #mv lib dist_lib
           IOS_LIBS=dist_lib/iphoneos
           SIM_LIBS=dist_lib/iphonesimulator
           
@@ -162,15 +165,15 @@ jobs:
           ###### DIST FILES #######
           RECIPE_IOS_LIBS=$RECIPE/$IOS_LIBS
           mkdir -p $RECIPE_IOS_LIBS
-          mv -f $IOS_LIBS/lib$RECIPE.a $RECIPE_IOS_LIBS/
+          mv -f lib/iphoneos/lib$RECIPE.a $RECIPE_IOS_LIBS/
           echo transfered $RECIPE_IOS_LIBS
           
           RECIPE_SIM_LIBS=$RECIPE/$SIM_LIBS
           mkdir -p $RECIPE_SIM_LIBS
-          mv -f $SIM_LIBS/lib$RECIPE.a $RECIPE_SIM_LIBS/
+          mv -f lib/iphonesimulator/lib$RECIPE.a $RECIPE_SIM_LIBS/
           echo transfered $RECIPE_SIM_LIBS
-
-        
+          
+          rm -rf lib
           
 
       - name: recipe_dist.zip

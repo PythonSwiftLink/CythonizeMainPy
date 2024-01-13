@@ -1,13 +1,13 @@
 owner: PythonSwiftLink
 
-repository: CythonizeMainPy
+repository: CythonizedMainPy
 
 swift_version: 5.9
 
 products:
-  - library: CythonizeMainPy
+  - library: CythonizedMainPy
     targets:
-      - CythonizeMainPy
+      - CythonizedMainPy
 
 dependencies:
   - package: PythonCore
@@ -16,7 +16,7 @@ dependencies:
       upToNextMajor: 311.0.0
 
 targets:
-- target: CythonMainPy
+- target: CythonizedMainPy
   dependencies:
     - product: PythonCore
       package: PythonCore
