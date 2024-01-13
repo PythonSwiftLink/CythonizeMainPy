@@ -111,8 +111,12 @@ jobs:
 
           PY_SITE=${{env.lib}}/python3.11/site-packages
           for FILE in ${{env.site_files}}
-          do 
-            mv -f $PY_SITE/$FILE output/$RECIPE/site-packages
+          do
+            SITEFILE=$PY_SITE/$FILE
+            if [[ $SITEFILE == $RECIPE* ]]
+            then
+              mv -f $PY_SITE/$FILE output/$RECIPE/site-packages
+            fi
           done
           
           zip -r site-packages.zip site-packages
