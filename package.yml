@@ -21,7 +21,7 @@ targets:
     - product: PythonCore
       package: PythonCore
       
-    - binary: output/CythonizeMainPy/xcframework
+    - binary: output/xcframework
 
   # linkerSettings:
   #   - framework: Accelerate
