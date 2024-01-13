@@ -109,19 +109,19 @@ jobs:
       - name: move numpy build
         run: |
           RECIPE=${{env.recipe}}
-          mkdir -p output/$RECIPE/lib
-          mkdir -p output/$RECIPE/site-packages
+          mkdir -p output/lib
+          mkdir -p output/site-packages
 
           PY_SITE=${{env.site_path}}
-          for FILE in $PY_SITE
+          for FILE in $PY_SITE/*
           do
             SITEFILE=$PY_SITE/$FILE
             if [[ $SITEFILE == ${{env.site_files}}* ]]
             then
-              mv -f $PY_SITE/$FILE output/$RECIPE/site-packages
+              mv -f $PY_SITE/$FILE output/site-packages
             fi
           done
-          cd output/$RECIPE
+          cd output
           zip -r site-packages.zip site-packages
           rm -rf site-packages
 
@@ -129,12 +129,12 @@ jobs:
       # taking out necessary libraries and zipping them into "output" folder
       - name: repack recipe xcframework
         run: |
-          cp -rf dist/xcframework/lib${{env.recipe}}.xcframework output/${{env.recipe}}/xcframework/
+          cp -rf dist/xcframework/lib${{env.recipe}}.xcframework output/xcframework/
         
 
       
       # - name: repack & zip lib/lib.a files
-      #   working-directory: output/${{env.recipe}}
+      #   working-directory: output
       #   run: |
       #     PY_LIB=${{env.lib}}
       #     RECIPE=${{env.recipe}}
@@ -171,13 +171,13 @@ jobs:
           
 
       - name: recipe_dist.zip
-        working-directory: output/${{env.recipe}}
+        working-directory: output
         run: |
           zip -r dist_lib.zip dist_lib
           rm -rf dist_lib
 
       - name: move and zip xcframeworks
-        working-directory: output/${{env.recipe}}/xcframework
+        working-directory: output/xcframework
         run: |
           for FILE in *; 
               do 
@@ -193,7 +193,7 @@ jobs:
           SwiftPackageGen \
             ./package.yml \
             311.${{ github.event.inputs.tag }} \
-            --output output/${{env.recipe}}/Package.swift
+            --output output/Package.swift
       
           
       # uploading "output" folder for the next task to use. (ubuntu machine)
