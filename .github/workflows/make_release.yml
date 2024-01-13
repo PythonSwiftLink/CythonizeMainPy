@@ -7,6 +7,7 @@ env:
   path: recipe
   site_files: "cythonized_main"
 
+  site_path: dist/root/python3/lib/python3.11/site-packages
   lib: dist/root/lib
 
 on:
@@ -109,7 +110,7 @@ jobs:
           mkdir -p output/$RECIPE/lib
           mkdir -p output/$RECIPE/site-packages
 
-          PY_SITE=${{env.lib}}/python3.11/site-packages
+          PY_SITE=${{env.site_path}}/python3.11/site-packages
           for FILE in ${{env.site_files}}
           do
             SITEFILE=$PY_SITE/$FILE
