@@ -7,11 +7,12 @@ env:
   path: recipe
   site_files: "cythonized_main"
   email: psythonswiftlink@gmail.com
+  kivy_core_version: 311.0.4
 
   site_path: dist/root/python3/lib/python3.11/site-packages
   lib: dist/root/lib
 
-  token: ${{secrets.TOKEN}}
+
 
 on:
 
@@ -63,7 +64,8 @@ jobs:
           #python3 -m pip install --upgrade pip
           
           #pip3 install https://github.com/kivy/kivy-ios/archive/master.zip
-          git clone https://github.com/kivy/kivy-ios
+          #git clone https://github.com/kivy/kivy-ios
+          git clone https://github.com/PythonSwiftLink/KivyCore/releases/download/${{ env.kivy_core_version }}/kivy-ios.zip
           
           # new kivy recipe patches before building it.
           
@@ -239,7 +241,7 @@ jobs:
       - name: commit package to release branch
         uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ env.TOKEN }}
+          API_TOKEN_GITHUB: ${{ secrets.TOKEN }}
         with:
           source-directory: ${{ env.recipe }}
           destination-github-username: ${{ github.repository_owner }}
@@ -254,7 +256,7 @@ jobs:
           commit: release
           tag: 311.${{ github.event.inputs.tag }}
           repo: ${{github.repository}}
-          token: ${{ env.TOKEN }}
+          token: ${{ secrets.TOKEN }}
           allowUpdates: true
           makeLatest: ${{ github.event.inputs.lastest }}
 
