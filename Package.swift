@@ -29,6 +29,6 @@ let package = Package(
         	linkerSettings: [
         	]
     	), 
-    	.binaryTarget(name: "libCythonizedMainPy", url: "https://github.com/PythonSwiftLink/CythonizeMainPy/releases/download/311.0.0/libCythonizedMainPy.zip", checksum: "80057d9c653f3ab0ddf879b357c0f9f6faa715605b014456a9a72907c07e6e6d"), 
+    	.binaryTarget(name: "libCythonizedMainPy", url: "https://github.com/PythonSwiftLink/CythonizeMainPy/releases/download/311.0.0/libCythonizedMainPy.zip", checksum: "605953143db1ae59b417fbcbe6cd8255530b7a31bc2f0b405dbf075c2c3ff33d"), 
     ]
 )
