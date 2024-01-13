@@ -13,7 +13,6 @@ env:
   lib: dist/root/lib
 
 
-
 on:
 
   workflow_dispatch:
@@ -245,7 +244,7 @@ jobs:
         with:
           source-directory: ${{ env.recipe }}
           destination-github-username: ${{ github.repository_owner }}
-          destination-repository-name: ${{ github.repository }}
+          destination-repository-name: ${{ env.recipe }}
           user-email: ${{ env.email }}
           target-branch: release
 
