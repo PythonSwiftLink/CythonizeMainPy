@@ -111,10 +111,10 @@ jobs:
           mkdir -p output/$RECIPE/site-packages
 
           PY_SITE=${{env.site_path}}
-          for FILE in ${{env.site_files}}
+          for FILE in $PY_SITE
           do
             SITEFILE=$PY_SITE/$FILE
-            if [[ $SITEFILE == $RECIPE* ]]
+            if [[ $SITEFILE == ${{env.site_files}}* ]]
             then
               mv -f $PY_SITE/$FILE output/$RECIPE/site-packages
             fi
@@ -145,8 +145,9 @@ jobs:
         run: |
           RECIPE=${{env.recipe}}
           # mkdir -p output/dist_lib
-          cp -rf dist/lib output/dist_lib
+          cp -rf dist/lib output/
           cd output
+          mv lib dist_lib
           IOS_LIBS=dist_lib/iphoneos
           SIM_LIBS=dist_lib/iphonesimulator
           
