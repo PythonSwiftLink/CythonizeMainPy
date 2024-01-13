@@ -144,7 +144,7 @@ jobs:
         id: repack_dist
         run: |
           RECIPE=${{env.recipe}}
-          mkdir -p output/dist_lib
+          # mkdir -p output/dist_lib
           mv dist/lib output/dist_lib
           cd output
           IOS_LIBS=dist_lib/iphoneos
