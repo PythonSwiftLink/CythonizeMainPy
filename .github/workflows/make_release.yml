@@ -65,7 +65,7 @@ jobs:
           
           #pip3 install https://github.com/kivy/kivy-ios/archive/master.zip
           #git clone https://github.com/kivy/kivy-ios
-          curl -o kivy-ios.zip https://github.com/PythonSwiftLink/KivyCore/releases/download/${{env.kivy_core_version}}/kivy-ios.zip
+          wget kivy-ios.zip https://github.com/PythonSwiftLink/KivyCore/releases/download/${{env.kivy_core_version}}/kivy-ios.zip
           unzip kivy-ios.zip
           # new kivy recipe patches before building it.
           
