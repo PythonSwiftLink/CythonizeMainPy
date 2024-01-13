@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "CythonizeMainPy", 
+    name: "CythonizedMainPy", 
     platforms: [.iOS(.v13)], 
     products: [
     	.library(
-        	name: "CythonizeMainPy", 
+        	name: "CythonizedMainPy", 
         	targets: [
-        		"CythonizeMainPy"
+        		"CythonizedMainPy"
         	]
     	), 
     ], 
@@ -19,7 +19,7 @@ let package = Package(
     ], 
     targets: [
     	.target(
-        	name: "CythonMainPy", 
+        	name: "CythonizedMainPy", 
         	dependencies: [
         		.product(name: "PythonCore", package: "PythonCore"), 
         		"libCythonizedMainPy", 
@@ -29,6 +29,6 @@ let package = Package(
         	linkerSettings: [
         	]
     	), 
-    	.binaryTarget(name: "libCythonizedMainPy", url: "https://github.com/PythonSwiftLink/CythonizeMainPy/releases/download/311.0.0/libCythonizedMainPy.zip", checksum: "605953143db1ae59b417fbcbe6cd8255530b7a31bc2f0b405dbf075c2c3ff33d"), 
+    	.binaryTarget(name: "libCythonizedMainPy", url: "https://github.com/PythonSwiftLink/CythonizedMainPy/releases/download/311.0.0/libCythonizedMainPy.zip", checksum: "0225c3e6ca5c92102308526ea727c2e1b5fe733e95484ea1be1f8f8d689b85cc"), 
     ]
 )
