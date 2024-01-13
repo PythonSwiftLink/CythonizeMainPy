@@ -131,6 +131,7 @@ jobs:
       # taking out necessary libraries and zipping them into "output" folder
       - name: repack recipe xcframework
         run: |
+          mkdir -p output/xcframework
           mv dist/xcframework/lib${{env.recipe}}.xcframework output/xcframework/lib${{env.recipe}}.xcframework
         
 
