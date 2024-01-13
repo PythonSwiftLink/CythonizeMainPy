@@ -3,7 +3,7 @@
 name: make release
 
 env:
-  recipe: CythonizeMainPy
+  recipe: CythonizedMainPy
   path: recipe
   site_files: "cythonized_main"
 
