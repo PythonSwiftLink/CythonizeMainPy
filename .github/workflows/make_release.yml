@@ -254,7 +254,7 @@ jobs:
           artifacts: "dist_lib.zip, xcframework/*.zip"
           commit: release
           tag: 311.${{ github.event.inputs.tag }}
-          repo: ${{github.repository}}
+          repo: ${{ env.recipe }}
           token: ${{ secrets.TOKEN }}
           allowUpdates: true
           makeLatest: ${{ github.event.inputs.lastest }}
