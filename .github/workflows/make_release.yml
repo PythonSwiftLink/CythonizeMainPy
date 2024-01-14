@@ -118,7 +118,7 @@ jobs:
           for FILE in $PY_SITE/*
           do
             SITEFILE=$PY_SITE/$FILE
-            if [[ $SITEFILE == ${{env.site_files}}* ]]
+            if [[ $SITEFILE = ${{env.site_files}}* ]]
             then
               mv -f $PY_SITE/$FILE output/site-packages/
             fi
