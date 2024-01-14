@@ -164,12 +164,12 @@ jobs:
 
           ###### DIST FILES #######
           RECIPE_IOS_LIBS=$RECIPE/$IOS_LIBS
-          mkdir -p $RECIPE_IOS_LIBS
+          mkdir -p $IOS_LIBS
           mv -f lib/iphoneos/lib$RECIPE.a $IOS_LIBS/
           echo transfered $IOS_LIBS
           
           RECIPE_SIM_LIBS=$RECIPE/$SIM_LIBS
-          mkdir -p $RECIPE_SIM_LIBS
+          mkdir -p $SIM_LIBS
           mv -f lib/iphonesimulator/lib$RECIPE.a $SIM_LIBS/
           echo transfered $SIM_LIBS
           
