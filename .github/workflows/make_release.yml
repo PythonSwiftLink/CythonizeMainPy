@@ -113,16 +113,16 @@ jobs:
           RECIPE=${{env.recipe}}
           mkdir -p output/lib
           mkdir -p output/site-packages
-
-          PY_SITE=${{env.site_path}}
-          for FILE in $PY_SITE/*
-          do
-            SITEFILE=$PY_SITE/$FILE
-            if [[ $SITEFILE = ${{env.site_files}}* ]]
-            then
-              mv -f $PY_SITE/$FILE output/site-packages/
-            fi
-          done
+          mv -f $PY_SITE/* output/site-packages/
+          # PY_SITE=${{env.site_path}}
+          # for FILE in $PY_SITE/*
+          # do
+          #   SITEFILE=$PY_SITE/$FILE
+          #   if [[ $SITEFILE = ${{env.site_files}}* ]]
+          #   then
+          #     mv -f $PY_SITE/$FILE output/site-packages/
+          #   fi
+          # done
           cd output
           zip -r site-packages.zip site-packages
           #rm -rf site-packages
