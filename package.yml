@@ -2,7 +2,7 @@ owner: PythonSwiftLink
 
 repository: CythonizedMainPy
 
-swift_version: 5.9
+swift_version: 5.8
 
 products:
   - library: CythonizedMainPy
