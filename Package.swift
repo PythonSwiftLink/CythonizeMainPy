@@ -15,13 +15,13 @@ let package = Package(
     	), 
     ], 
     dependencies: [
-    	.package(url: "https://github.com/PythonSwiftLink/PythonCore", .upToNextMajor(from: "311.0.0"))
+    	.package(url: "https://github.com/PythonSwiftLink/KivyPythonCore", .upToNextMajor(from: "311.0.0"))
     ], 
     targets: [
     	.target(
         	name: "CythonizedMainPy", 
         	dependencies: [
-        		.product(name: "PythonCore", package: "PythonCore"), 
+        		.product(name: "PythonCore", package: "KivyPythonCore"), 
         		"libCythonizedMainPy", 
         	], 
         	resources: [
@@ -29,6 +29,6 @@ let package = Package(
         	linkerSettings: [
         	]
     	), 
-    	.binaryTarget(name: "libCythonizedMainPy", url: "https://github.com/PythonSwiftLink/CythonizedMainPy/releases/download/311.0.1/libCythonizedMainPy.zip", checksum: "097a28635a4b8b9a15ed394e497cbd7637d0d7b99a26b3e9e278ad30876d4eae"), 
+    	.binaryTarget(name: "libCythonizedMainPy", url: "https://github.com/PythonSwiftLink/CythonizedMainPy/releases/download/311.0.2/libCythonizedMainPy.zip", checksum: "5660263c02fcb25b0c426d581efa4bab239a56dcfda4e229974189b5515c7e20"), 
     ]
 )
