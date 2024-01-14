@@ -120,12 +120,12 @@ jobs:
             SITEFILE=$PY_SITE/$FILE
             if [[ $SITEFILE == ${{env.site_files}}* ]]
             then
-              mv -f $PY_SITE/$FILE output/site-packages
+              mv -f $PY_SITE/$FILE output/site-packages/
             fi
           done
           cd output
           zip -r site-packages.zip site-packages
-          rm -rf site-packages
+          #rm -rf site-packages
 
       
       # taking out necessary libraries and zipping them into "output" folder
@@ -165,13 +165,13 @@ jobs:
           ###### DIST FILES #######
           RECIPE_IOS_LIBS=$RECIPE/$IOS_LIBS
           mkdir -p $RECIPE_IOS_LIBS
-          mv -f lib/iphoneos/lib$RECIPE.a $RECIPE_IOS_LIBS/
-          echo transfered $RECIPE_IOS_LIBS
+          mv -f lib/iphoneos/lib$RECIPE.a $IOS_LIBS/
+          echo transfered $IOS_LIBS
           
           RECIPE_SIM_LIBS=$RECIPE/$SIM_LIBS
           mkdir -p $RECIPE_SIM_LIBS
-          mv -f lib/iphonesimulator/lib$RECIPE.a $RECIPE_SIM_LIBS/
-          echo transfered $RECIPE_SIM_LIBS
+          mv -f lib/iphonesimulator/lib$RECIPE.a $SIM_LIBS/
+          echo transfered $SIM_LIBS
           
           rm -rf lib
           
